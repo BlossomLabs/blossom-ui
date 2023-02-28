@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Box } from "@chakra-ui/react";
-import { TextCopy } from ".";
+import { TextCopy, Blockie } from ".";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
-
+  const address = "0x05e5472AEc66eB811329CE0c7698A620b6c5CB35";
   return (
     <div className="App">
       <div>
@@ -30,8 +30,10 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <Box w={"200px"}>
-        <TextCopy value="0x05e5472AEc66eB811329CE0c7698A620b6c5CB35" />
+        <TextCopy value={address} />
       </Box>
+      <Blockie address={address} />
+      <Blockie address={address} radius={"md"} scale={2} opacity={0.5} />
     </div>
   );
 }
