@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box } from "@chakra-ui/react";
-import { TextCopy, Blockie } from ".";
+import { TextCopy, Blockie, TransactionBadge } from ".";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
@@ -34,6 +34,14 @@ function App() {
       </Box>
       <Blockie address={address} />
       <Blockie address={address} radius={"md"} scale={2} opacity={0.5} />
+      <TransactionBadge
+        transaction="0xbffb1572c2b820ffd1ce420382a242b8df030fb8a206908703ca39e36ec78646"
+        networkType="gnosis"
+      />
+      <TransactionBadge
+        transaction="0x8aa6c8ecae2cef6236a194cf2f285036fa2d822aef098b2d97f5405b2b04bca0"
+        shorten={false}
+      />
     </div>
   );
 }
