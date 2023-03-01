@@ -52,7 +52,7 @@ function BlockiesScaling({
  * A component to get the Ethereum Identicon, an image that identifies Ethereum Accounts.
  *
  * @param radius - Allows same values as `box-radius` property from ChakraUI default theme.
- * @param adress - A valid Etherum Adress.
+ * @param address - A valid Etherum Adress.
  * @param scale - Size of the image.
  * @param opacity - Softens the colors of the image.
  *
