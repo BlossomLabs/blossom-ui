@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import {
   Popover,
   PopoverTrigger,
@@ -13,6 +14,7 @@ import {
   PopoverFooter,
   Link,
   Flex,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { blockExplorerUrl, isAddress, shortenAddress } from "../utils";
 import Blockie from "./Blockie";
@@ -24,15 +26,36 @@ type IdentityBadgeProps = {
   compact?: boolean;
   label?: string;
   networkType?: string;
+  /**
+   * @defaultValue `true`
+   */
   shorten?: boolean;
   disabled?: boolean;
   popoverAction?: {
     label: React.ReactNode;
     onClick: () => void;
   };
+  /**
+   * @defaultValue `Address`
+   */
   popoverTitle?: React.ReactNode;
 };
 
+/**
+ *
+ *	@param address - A valid etherum address.
+ *	@param shorten - If true and entity is a valid address, reduces entity to only the first and last four characters (excluding the "0x" prefix) for display. i.e: address="0xcafe…5f2C"
+ *	@param label - A label for the address. If available, label is displayed instead of the address on the badge.
+ *	@param disabled - Disables the badge as a button and avoids prompting the popover on click.
+ *	@param compact - Smaller version of the IdentityBadge. Should be used when the IdentityBadge is placed inline with text.
+ *	@param popoverTitle - The title of the popover. You can pass anything that can be rendered, such as a num, string, DOM element, an array of them, or React fragments that contain them.
+ *	@param isAccountConnected - If the given, assumes `address` is the same as the connected account and renders "you" in the popover.
+ *	@param networkType - Checks the type of network to get an Etherscan URL from the entity.
+ *	@param popoverAction  - The action of the popover.
+ *	@param popoverAction.label  - The node rendered in the popover's action button.
+ *	@param popoverAction.onClick  - The onclick handler for the popover's action button.
+ *
+ */
 export default function IdentityBadge({
   address = "",
   shorten,
@@ -42,11 +65,20 @@ export default function IdentityBadge({
   popoverTitle,
   isAccountConnected,
   networkType,
+  popoverAction,
 }: IdentityBadgeProps) {
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const isValidAddress = isAddress(address);
   const displayLabel =
     label || (isValidAddress && shorten ? shortenAddress(address) : address);
   const etherscanUrl = blockExplorerUrl("address", address, { networkType });
+
+  const handlePopoverActionClick = useCallback(() => {
+    onClose();
+    if (popoverAction && popoverAction.onClick) {
+      popoverAction.onClick();
+    }
+  }, [onClose, popoverAction]);
 
   function IdentityBadgeBlockie() {
     return (
@@ -66,13 +98,14 @@ export default function IdentityBadge({
       </Text>
     </HStack>
   ) : (
-    <Popover>
+    <Popover isOpen={isOpen} onClose={onClose}>
       <HStack>
         <PopoverTrigger>
           <Button
             leftIcon={isValidAddress ? <IdentityBadgeBlockie /> : undefined}
             size={"sm"}
             title={address}
+            onClick={onToggle}
           >
             {displayLabel}
           </Button>
@@ -101,11 +134,20 @@ export default function IdentityBadge({
           <AddressField address={address} />
         </PopoverBody>
         <PopoverFooter>
-          {etherscanUrl ? (
-            <Flex justify={"flex-end"}>
-              <Link href={etherscanUrl}>See on Explorer</Link>
-            </Flex>
-          ) : null}
+          <HStack justify={"space-between"}>
+            {popoverAction ? (
+              <Button onClick={handlePopoverActionClick}>
+                {popoverAction.label}
+              </Button>
+            ) : null}
+            {etherscanUrl ? (
+              <Flex justify={"flex-end"} w={popoverAction ? "unset" : "full"}>
+                <Link href={etherscanUrl} target={"_blank"}>
+                  See on Explorer
+                </Link>
+              </Flex>
+            ) : null}
+          </HStack>
         </PopoverFooter>
       </PopoverContent>
     </Popover>
@@ -114,4 +156,5 @@ export default function IdentityBadge({
 
 IdentityBadge.defaultProps = {
   popoverTitle: "Address",
+  shorten: true,
 };
