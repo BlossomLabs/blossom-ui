@@ -9,7 +9,13 @@ import {
 import { CopyIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-export default function TextCopy({ value }: { value: string }): JSX.Element {
+export default function TextCopy({
+  value,
+  adornment,
+}: {
+  value: string;
+  adornment?: React.ReactNode;
+}): JSX.Element {
   const { onCopy } = useClipboard(value);
   const [hasCopied, onClick] = useState(false);
 
@@ -27,11 +33,14 @@ export default function TextCopy({ value }: { value: string }): JSX.Element {
       border={"1px solid"}
       color={"blackAlpha.400"}
       borderRadius={"md"}
-      pl={2}
-      gridTemplateColumns={"max(calc(100% - 2.5rem)) auto"}
       overflow={"hidden"}
+      gridTemplateColumns={`auto max(calc(100% - 2.5rem ${
+        adornment ? "- 3rem" : ""
+      })) auto`}
+      maxH={12}
     >
-      <GridItem>
+      <GridItem h={"100%"}>{adornment}</GridItem>
+      <GridItem pl={2}>
         <Text whiteSpace={"nowrap"}>{value}</Text>
       </GridItem>
       <GridItem bgColor={"white"}>
