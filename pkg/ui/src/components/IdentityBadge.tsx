@@ -9,9 +9,14 @@ import {
   Button,
   HStack,
   Text,
+  Tag,
+  PopoverFooter,
+  Link,
+  Flex,
 } from "@chakra-ui/react";
-import { isAddress, shortenAddress } from "../utils";
+import { blockExplorerUrl, isAddress, shortenAddress } from "../utils";
 import Blockie from "./Blockie";
+import AddressField from "./AddressField";
 
 type IdentityBadgeProps = {
   address?: string;
@@ -34,10 +39,14 @@ export default function IdentityBadge({
   label,
   disabled,
   compact,
+  popoverTitle,
+  isAccountConnected,
+  networkType,
 }: IdentityBadgeProps) {
   const isValidAddress = isAddress(address);
   const displayLabel =
     label || (isValidAddress && shorten ? shortenAddress(address) : address);
+  const etherscanUrl = blockExplorerUrl("address", address, { networkType });
 
   function IdentityBadgeBlockie() {
     return (
@@ -72,9 +81,37 @@ export default function IdentityBadge({
       <PopoverContent>
         <PopoverArrow />
         <PopoverCloseButton />
-        <PopoverHeader>Confirmation!</PopoverHeader>
-        <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
+        <PopoverHeader>
+          <HStack>
+            <Text>{popoverTitle}</Text>
+            {isAccountConnected ? (
+              <Tag
+                size={"md"}
+                variant="subtle"
+                colorScheme="cyan"
+                borderRadius={"full"}
+                title="This is your Ethereum address"
+              >
+                you
+              </Tag>
+            ) : null}
+          </HStack>
+        </PopoverHeader>
+        <PopoverBody>
+          <AddressField address={address} />
+        </PopoverBody>
+        <PopoverFooter>
+          {etherscanUrl ? (
+            <Flex justify={"flex-end"}>
+              <Link href={etherscanUrl}>See on Explorer</Link>
+            </Flex>
+          ) : null}
+        </PopoverFooter>
       </PopoverContent>
     </Popover>
   );
 }
+
+IdentityBadge.defaultProps = {
+  popoverTitle: "Address",
+};
