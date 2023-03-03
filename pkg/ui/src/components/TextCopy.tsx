@@ -37,9 +37,12 @@ export default function TextCopy({
       gridTemplateColumns={`auto max(calc(100% - 2.5rem ${
         adornment ? "- 3rem" : ""
       })) auto`}
+      gridTemplateRows={"max(3rem)"}
       maxH={12}
+      maxW={"full"}
+      w={"sm"}
     >
-      <GridItem h={"100%"}>{adornment}</GridItem>
+      <GridItem boxSize={"full"}>{adornment}</GridItem>
       <GridItem pl={2}>
         <Text whiteSpace={"nowrap"}>{value}</Text>
       </GridItem>
@@ -55,6 +58,7 @@ export default function TextCopy({
             icon={<CopyIcon boxSize={4} color={"blackAlpha.400"} />}
             variant={"customIconButton"}
             onClick={handleOnClick}
+            size={"md"}
           />
         </Tooltip>
       </GridItem>
