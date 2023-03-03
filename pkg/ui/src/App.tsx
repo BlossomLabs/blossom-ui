@@ -35,7 +35,6 @@ function App() {
           address="0xc41e4c10b37d3397a99d4a90e7d85508a69a5c4c"
           isAccountConnected
         />
-        ,
         <IdentityBadge
           label="Popeye"
           address="0x2c9341a52cfa3f2c2554ca1803134137b9366b3c"
@@ -49,18 +48,17 @@ function App() {
             onClick: () => console.log("clicked action"),
           }}
         />
-        ,
         <IdentityBadge
           address="0x7c708ac7db979fa06705f8880f29f82cfc406993"
           isAccountConnected
+          shorten={false}
         />
-        ,
         <IdentityBadge
-          address="0x7c708ac7db979fa06705f8880f29f82cfc406993"
-          compact={true}
+          address="0xf1bea24376329e01c7c10a00a6a7329591168cf9"
+          compact
           isAccountConnected
+          networkType="gnosis"
         />
-        ,
         <IdentityBadge
           label="Badge only"
           address="0xc41e4c10b37d3397a99d4a90e7d85508a69a5c4c"
