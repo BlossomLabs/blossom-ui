@@ -1,6 +1,11 @@
 import { Box, VStack, HStack, Center, Text } from "@chakra-ui/react";
-import { TextCopy, Blockie, TransactionBadge } from ".";
-import IdentityBadge from "./components/IdentityBadge";
+import {
+  TextCopy,
+  Blockie,
+  TransactionBadge,
+  IdentityBadge,
+  TokenBadge,
+} from ".";
 
 function App() {
   const address = "0x05e5472AEc66eB811329CE0c7698A620b6c5CB35";
@@ -64,6 +69,76 @@ function App() {
           address="0xc41e4c10b37d3397a99d4a90e7d85508a69a5c4c"
           disabled
         />
+        <Box
+          css={`
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            width: 400px;
+            margin: 0 auto;
+          `}
+        >
+          {[
+            {
+              address: "0x0000000000000000000000000000000000000000",
+              symbol: "ETH",
+              name: "Ethereum",
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+              name: "Aragon",
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+              name: "Aragon very very very very long name",
+              width: "120px",
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+              name: "Aragon very very very very long name",
+              width: "200px",
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+              name: "Aragon very very very very long name",
+              width: "300px",
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+              name: "Aragon badge only",
+              width: "250px",
+              disabled: true,
+            },
+            {
+              address: "0x960b236A07cf122663c4303350609A66A7B288C0",
+              symbol: "ANT",
+              name: "Aragon compact and very very very very long name",
+              width: "250px",
+              compact: true,
+            },
+          ].map(({ width, ...props }, i) => (
+            <Box
+              key={i}
+              css={`
+                display: flex;
+                width: ${width || "auto"};
+                margin-top: 20px;
+              `}
+            >
+              <TokenBadge {...props} />
+            </Box>
+          ))}
+        </Box>
       </HStack>
     </VStack>
   );
