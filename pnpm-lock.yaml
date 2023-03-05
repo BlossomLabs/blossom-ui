@@ -115,6 +115,7 @@ importers:
       eslint-config-turbo: ^0.0.8
       eslint-plugin-testing-library: ^5.10.2
       framer-motion: ^10.0.1
+      js-sha3: ^0.8.0
       jsdom: ^21.1.0
       react: ^18.2.0
       react-blockies: ^1.4.1
@@ -147,6 +148,7 @@ importers:
       eslint-config-react-app: 7.0.1_yfqovispp7u7jaktymfaqwl2py
       eslint-config-turbo: 0.0.8_eslint@7.32.0
       eslint-plugin-testing-library: 5.10.2_yfqovispp7u7jaktymfaqwl2py
+      js-sha3: 0.8.0
       jsdom: 21.1.0
       tsconfig: link:../tsconfig
       typescript: 4.9.4
@@ -7467,7 +7469,6 @@ packages:
 
   /js-sha3/0.8.0:
     resolution: {integrity: sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==}
-    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}

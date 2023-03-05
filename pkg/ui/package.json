@@ -47,6 +47,7 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-config-turbo": "^0.0.8",
     "eslint-plugin-testing-library": "^5.10.2",
+    "js-sha3": "^0.8.0",
     "jsdom": "^21.1.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2",
