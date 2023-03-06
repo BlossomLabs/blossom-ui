@@ -1,5 +1,5 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import theme, {
+import { ChakraProvider, ColorModeScript, extendTheme } from "@chakra-ui/react";
+import defaultTheme, {
   type DefaultColorsType,
   defaultColors,
 } from "./customTheme";
@@ -46,9 +46,7 @@ function customColorsFormatter(
   const formattedCustomColors: DefaultColorsType = {};
 
   Object.keys(customColors).forEach((key) => {
-    formattedCustomColors[key] = colorModeFormatter(
-      ...customColors[key]
-    );
+    formattedCustomColors[key] = colorModeFormatter(...customColors[key]);
   });
 
   return formattedCustomColors;
@@ -68,25 +66,32 @@ export default function ThemeProvider({
   customColors = {},
 }: {
   children: React.ReactNode;
-  overrideDefaultTheme?: Record<string, string | number>;
+  overrideDefaultTheme?: Record<string, any>;
   customColors?: CustomColorsType;
 }) {
   const formattedCustomColors = customColorsFormatter(customColors);
+  const initialColorMode =
+    overrideDefaultTheme?.config?.initialColorMode ||
+    defaultTheme.config.initialColorMode;
+
+  const customTheme = {
+    ...defaultTheme,
+    ...overrideDefaultTheme,
+    semanticTokens: {
+      colors: {
+        ...defaultColors,
+        ...formattedCustomColors,
+      },
+    },
+  };
+
   return (
-    <ChakraProvider
-      theme={{
-        ...theme,
-        semanticTokens: {
-          colors: {
-            ...defaultColors,
-            ...formattedCustomColors,
-          },
-        },
-        ...overrideDefaultTheme,
-      }}
-    >
-      {children}
-    </ChakraProvider>
+    <>
+      <ColorModeScript initialColorMode={initialColorMode} />
+      <ChakraProvider theme={extendTheme(customTheme)}>
+        {children}
+      </ChakraProvider>
+    </>
   );
 }
 
