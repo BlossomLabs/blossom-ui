@@ -1,8 +1,7 @@
 import { ChakraProvider, ColorModeScript, extendTheme } from "@chakra-ui/react";
-import defaultTheme, {
-  type DefaultColorsType,
-  defaultColors,
-} from "./customTheme";
+import defaultTheme from "./customTheme";
+import defaultColors, { type DefaultColorsType } from "./colors";
+import defaultTextStyles from "./textStyles";
 import { colorModeFormatter } from "../utils";
 
 /**
@@ -64,10 +63,14 @@ export default function ThemeProvider({
   children,
   overrideDefaultTheme,
   customColors = {},
+  customTextStyles = {},
+  fonts,
 }: {
   children: React.ReactNode;
   overrideDefaultTheme?: Record<string, any>;
   customColors?: CustomColorsType;
+  customTextStyles?: Record<string, any>;
+  fonts: FontsTypes;
 }) {
   const formattedCustomColors = customColorsFormatter(customColors);
   const initialColorMode =
@@ -77,11 +80,16 @@ export default function ThemeProvider({
   const customTheme = {
     ...defaultTheme,
     ...overrideDefaultTheme,
+    fonts,
     semanticTokens: {
       colors: {
         ...defaultColors,
         ...formattedCustomColors,
       },
+    },
+    textStyles: {
+      ...defaultTextStyles,
+      ...customTextStyles,
     },
   };
 
@@ -107,3 +115,9 @@ export default function ThemeProvider({
  * ```
  */
 type CustomColorsType = Record<string, [string, string?]>;
+
+type FontsTypes = {
+  heading: string;
+  body: string;
+  monospace: string;
+};
