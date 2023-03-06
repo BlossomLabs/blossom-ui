@@ -91,26 +91,29 @@ export default function IdentityBadge({
   }
 
   return disabled ? (
-    <HStack>
+    <HStack whiteSpace={"nowrap"} textOverflow={"ellipsis"} overflow={"hidden"}>
       <IdentityBadgeBlockie />
-      <Text as={"span"} title={address}>
+      <Text
+        as={"span"}
+        title={address}
+        textOverflow={"ellipsis"}
+        overflow={"hidden"}
+      >
         {displayLabel}
       </Text>
     </HStack>
   ) : (
     <Popover isOpen={isOpen} onClose={onClose}>
-      <HStack>
-        <PopoverTrigger>
-          <Button
-            leftIcon={isValidAddress ? <IdentityBadgeBlockie /> : undefined}
-            size={"sm"}
-            title={address}
-            onClick={onToggle}
-          >
-            {displayLabel}
-          </Button>
-        </PopoverTrigger>
-      </HStack>
+      <PopoverTrigger>
+        <Button
+          leftIcon={isValidAddress ? <IdentityBadgeBlockie /> : undefined}
+          size={"sm"}
+          title={address}
+          onClick={onToggle}
+        >
+          {displayLabel}
+        </Button>
+      </PopoverTrigger>
       <PopoverContent>
         <PopoverArrow />
         <PopoverCloseButton />

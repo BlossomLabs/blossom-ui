@@ -14,6 +14,7 @@ import {
   Link,
   Flex,
   useDisclosure,
+  Box,
 } from "@chakra-ui/react";
 import { blockExplorerUrl, isAddress, tokenIconUrl } from "../utils";
 import AddressField from "./AddressField";
@@ -55,15 +56,32 @@ export default function TokenBadge({
 
   function Label() {
     return (
-      <HStack>
-        {name ? <Text as={"span"}>{name}</Text> : null}
+      <HStack
+        whiteSpace={"nowrap"}
+        textOverflow={"ellipsis"}
+        overflow={"hidden"}
+      >
+        {name ? (
+          <Text
+            as={"span"}
+            textOverflow={"ellipsis"}
+            overflow={"hidden"}
+            minW={"20%"}
+          >
+            {name}
+          </Text>
+        ) : null}
         <Text as={"span"}>{name ? `(${symbol})` : symbol}</Text>
       </HStack>
     );
   }
 
   function TokenIcon() {
-    return <Image boxSize={4} src={iconSrc} alt={title} />;
+    return (
+      <Box overflow={"hidden"} borderRadius={"base"} boxSize={4}>
+        <Image boxSize={"100%"} src={iconSrc} alt={title} />;
+      </Box>
+    );
   }
 
   return disabled || !isValidAddress ? (
@@ -73,18 +91,16 @@ export default function TokenBadge({
     </HStack>
   ) : (
     <Popover isOpen={isOpen} onClose={onClose}>
-      <HStack>
-        <PopoverTrigger>
-          <Button
-            leftIcon={isValidAddress ? <TokenIcon /> : undefined}
-            size={"sm"}
-            title={`${title} − ${address || "No address"}`}
-            onClick={onToggle}
-          >
-            <Label />
-          </Button>
-        </PopoverTrigger>
-      </HStack>
+      <PopoverTrigger>
+        <Button
+          leftIcon={isValidAddress ? <TokenIcon /> : undefined}
+          size={"sm"}
+          title={`${title} − ${address || "No address"}`}
+          onClick={onToggle}
+        >
+          <Label />
+        </Button>
+      </PopoverTrigger>
       <PopoverContent>
         <PopoverArrow />
         <PopoverCloseButton />
