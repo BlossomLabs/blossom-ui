@@ -104,6 +104,7 @@ export default function IdentityBadge({
         textOverflow={"ellipsis"}
         overflow={"hidden"}
         color={"badgeContent"}
+        textStyle={"body2"}
       >
         {displayLabel}
       </Text>
@@ -117,7 +118,9 @@ export default function IdentityBadge({
           onClick={onToggle}
           variant={"badge"}
         >
-          {displayLabel}
+          <Text as={"span"} textStyle={"body2"}>
+            {displayLabel}
+          </Text>
         </Button>
       </PopoverTrigger>
       <PopoverContent>
@@ -151,7 +154,7 @@ export default function IdentityBadge({
             ) : null}
             {etherscanUrl ? (
               <Flex justify={"flex-end"} w={popoverAction ? "unset" : "full"}>
-                <Link href={etherscanUrl} target={"_blank"}>
+                <Link href={etherscanUrl} target={"_blank"} textStyle={"body3"}>
                   See on Explorer
                 </Link>
               </Flex>

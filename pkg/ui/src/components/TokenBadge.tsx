@@ -60,6 +60,7 @@ export default function TokenBadge({
         whiteSpace={"nowrap"}
         textOverflow={"ellipsis"}
         overflow={"hidden"}
+        textStyle={"body2"}
       >
         {name ? (
           <Text
@@ -71,6 +72,7 @@ export default function TokenBadge({
             {name}
           </Text>
         ) : null}
+
         <Text as={"span"}>{name ? `(${symbol})` : symbol}</Text>
       </HStack>
     );
@@ -125,7 +127,7 @@ export default function TokenBadge({
         <PopoverFooter>
           {etherscanUrl ? (
             <Flex justify={"flex-end"} w={"full"}>
-              <Link href={etherscanUrl} target={"_blank"}>
+              <Link href={etherscanUrl} target={"_blank"} textStyle={"body3"}>
                 See on Explorer
               </Link>
             </Flex>
