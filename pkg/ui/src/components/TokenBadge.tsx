@@ -103,6 +103,7 @@ export default function TokenBadge({
           size={"sm"}
           title={`${title} − ${address || "No address"}`}
           onClick={onToggle}
+          variant={"badge"}
         >
           <Label />
         </Button>

@@ -98,6 +98,7 @@ export default function IdentityBadge({
         title={address}
         textOverflow={"ellipsis"}
         overflow={"hidden"}
+        color={"badgeContent"}
       >
         {displayLabel}
       </Text>
@@ -110,6 +111,7 @@ export default function IdentityBadge({
           size={"sm"}
           title={address}
           onClick={onToggle}
+          variant={"badge"}
         >
           {displayLabel}
         </Button>
