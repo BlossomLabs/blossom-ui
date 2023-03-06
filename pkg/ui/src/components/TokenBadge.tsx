@@ -91,7 +91,7 @@ export default function TokenBadge({
   }
 
   return disabled || !isValidAddress ? (
-    <HStack>
+    <HStack cursor={"default"}>
       <TokenIcon />
       <Label />
     </HStack>
@@ -100,10 +100,10 @@ export default function TokenBadge({
       <PopoverTrigger>
         <Button
           leftIcon={isValidAddress ? <TokenIcon /> : undefined}
-          size={"sm"}
           title={`${title} − ${address || "No address"}`}
           onClick={onToggle}
           variant={"badge"}
+          pl={2}
         >
           <Label />
         </Button>

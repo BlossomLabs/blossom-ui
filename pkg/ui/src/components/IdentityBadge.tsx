@@ -91,7 +91,12 @@ export default function IdentityBadge({
   }
 
   return disabled ? (
-    <HStack whiteSpace={"nowrap"} textOverflow={"ellipsis"} overflow={"hidden"}>
+    <HStack
+      whiteSpace={"nowrap"}
+      textOverflow={"ellipsis"}
+      overflow={"hidden"}
+      cursor={"default"}
+    >
       <IdentityBadgeBlockie />
       <Text
         as={"span"}
@@ -108,7 +113,6 @@ export default function IdentityBadge({
       <PopoverTrigger>
         <Button
           leftIcon={isValidAddress ? <IdentityBadgeBlockie /> : undefined}
-          size={"sm"}
           title={address}
           onClick={onToggle}
           variant={"badge"}

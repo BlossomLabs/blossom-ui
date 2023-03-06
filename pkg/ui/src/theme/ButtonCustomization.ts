@@ -5,9 +5,6 @@ const buttonBase = {
   textDecoration: "none",
   textAlign: "center",
   background: "none",
-  padding: 0,
-  border: 0,
-  outline: 0,
   borderRadius: "base",
 };
 
@@ -24,11 +21,13 @@ const customIconButton = defineStyle({
   },
 });
 
-const sizes = {
-  md: defineStyle({
-    height: 6,
-  }),
-};
+const md = defineStyle({
+  height: 6,
+  paddingRight: 2,
+  paddingLeft: 0,
+  border: 0,
+  outline: 0,
+});
 
 const badgeVariant = defineStyle((props) => {
   const { compact, disabled } = props;
@@ -45,9 +44,9 @@ const badgeVariant = defineStyle((props) => {
 
 const Button = defineStyleConfig({
   variants: { customIconButton, badge: badgeVariant },
-  sizes,
+  sizes: { md },
   defaultProps: {
-    size: "md", // set the default color scheme to purple
+    size: "md",
   },
 });
 
