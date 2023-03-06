@@ -102,6 +102,8 @@ importers:
       '@chakra-ui/react': ^2.5.1
       '@emotion/react': ^11.10.6
       '@emotion/styled': ^11.10.6
+      '@fontsource/overpass': ^4.5.11
+      '@fontsource/overpass-mono': ^4.5.11
       '@testing-library/react': ^13.4.0
       '@testing-library/user-event': ^14.4.3
       '@types/react': ^18.0.17
@@ -136,6 +138,8 @@ importers:
       react-blockies: 1.4.1_react@18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@fontsource/overpass': 4.5.11
+      '@fontsource/overpass-mono': 4.5.11
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3
       '@types/react': 18.0.26
@@ -3325,6 +3329,14 @@ packages:
       '@ethersproject/properties': 5.7.0
       '@ethersproject/strings': 5.7.0
     dev: false
+
+  /@fontsource/overpass-mono/4.5.11:
+    resolution: {integrity: sha512-JggIvXo6+Ia6Zs84JkJbpkdp7eJxAQKHywVfGgETdXtW7HPPokFAjzKL3Km8dpAx/WtjJYe84hY3hT+3psgt5A==}
+    dev: true
+
+  /@fontsource/overpass/4.5.11:
+    resolution: {integrity: sha512-x6A3fpFQdaqZ7O6LKyoeKzfzxjZhnJw1I7Yf4D8xKO8GM4N+0P8Ch6jIVD/DAgDmlc3/us5ZZEuaxwHJGiAkMA==}
+    dev: true
 
   /@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
