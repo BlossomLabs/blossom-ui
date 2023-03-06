@@ -37,7 +37,6 @@ export default function TextCopy({
       gridTemplateColumns={`auto max(calc(100% - 2.5rem ${
         adornment ? "- 3rem" : ""
       })) auto`}
-      gridTemplateRows={"max(3rem)"}
       maxH={12}
       maxW={"full"}
       w={"sm"}

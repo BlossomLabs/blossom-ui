@@ -14,7 +14,7 @@ import {
   Link,
   Flex,
   useDisclosure,
-  Box,
+  Center,
 } from "@chakra-ui/react";
 import { blockExplorerUrl, isAddress, tokenIconUrl } from "../utils";
 import AddressField from "./AddressField";
@@ -76,11 +76,17 @@ export default function TokenBadge({
     );
   }
 
-  function TokenIcon() {
+  function TokenIcon({ size = "base" }: { size?: "lg" | "base" }) {
+    const isIconBig = size === "lg";
+
     return (
-      <Box overflow={"hidden"} borderRadius={"base"} boxSize={4}>
-        <Image boxSize={"100%"} src={iconSrc} alt={title} />;
-      </Box>
+      <Center
+        overflow={"hidden"}
+        borderRadius={"base"}
+        boxSize={isIconBig ? "full" : 4}
+      >
+        <Image boxSize={isIconBig ? 9 : "full"} src={iconSrc} alt={title} />
+      </Center>
     );
   }
 
@@ -112,7 +118,7 @@ export default function TokenBadge({
         <PopoverBody>
           <AddressField
             address={address}
-            icon={iconSrc ? <TokenIcon /> : null}
+            icon={iconSrc ? <TokenIcon size={"lg"} /> : null}
           />
         </PopoverBody>
         <PopoverFooter>
