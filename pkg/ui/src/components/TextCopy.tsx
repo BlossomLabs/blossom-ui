@@ -9,12 +9,19 @@ import {
 import { CopyIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
+/**
+ * @param adornment Allows to set an adornment that will get used on the left side of the text field (in left to right languages). The copy button is always displayed on the other side.
+ * @param value The field content (single line).
+ * @param monospace Set this to false to disable the use of the monospace font (e.g. for Ethereum addresses).
+ */
 export default function TextCopy({
   value,
   adornment,
+  monospace = true,
 }: {
   value: string;
   adornment?: React.ReactNode;
+  monospace?: boolean;
 }): JSX.Element {
   const { onCopy } = useClipboard(value);
   const [hasCopied, onClick] = useState(false);
@@ -27,6 +34,10 @@ export default function TextCopy({
     }, 1500);
   }
 
+  const columns = adornment
+    ? "auto max(calc(100% - 2.5rem - 2.5rem)) auto"
+    : "max(calc(100% - 2.5rem)) auto";
+
   return (
     <Grid
       alignItems={"center"}
@@ -34,18 +45,25 @@ export default function TextCopy({
       color={"blackAlpha.400"}
       borderRadius={"md"}
       overflow={"hidden"}
-      gridTemplateColumns={`auto max(calc(100% - 2.5rem ${
-        adornment ? "- 3rem" : ""
-      })) auto`}
-      maxH={12}
       maxW={"full"}
       w={"sm"}
+      maxH={10}
+      gridTemplateColumns={columns}
+      gridTemplateRows={"max(2.5rem)"}
     >
-      <GridItem boxSize={"full"}>{adornment}</GridItem>
+      {adornment ? <GridItem boxSize={"full"}>{adornment}</GridItem> : null}
       <GridItem pl={2}>
-        <Text whiteSpace={"nowrap"}>{value}</Text>
+        <Text
+          whiteSpace={"nowrap"}
+          textOverflow={"ellipsis"}
+          overflow={"hidden"}
+          textStyle={monospace ? "address2" : "body3"}
+          color={"surfaceContent"}
+        >
+          {value}
+        </Text>
       </GridItem>
-      <GridItem bgColor={"white"}>
+      <GridItem>
         <Tooltip
           isOpen={hasCopied}
           hasArrow

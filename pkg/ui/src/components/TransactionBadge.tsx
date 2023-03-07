@@ -1,4 +1,4 @@
-import { Button, Link } from "@chakra-ui/react";
+import { Button, Link, Text } from "@chakra-ui/react";
 import { blockExplorerUrl, isTransaction, shortenTransaction } from "../utils";
 
 type TransactionBadgeProps = {
@@ -38,10 +38,18 @@ export default function TransactionBadge({
   const isDisabled = disabled || !transactionUrl;
 
   return isDisabled ? (
-    <Button disabled={true}>Invalid transaction</Button>
+    <Button disabled={true} variant={"badge"}>
+      <Text as={"span"} textStyle={"body2"}>
+        Invalid transaction
+      </Text>
+    </Button>
   ) : (
     <Link href={transactionUrl} isExternal title={transaction}>
-      <Button size={"sm"}>{label}</Button>
+      <Button size={"sm"} variant={"badge"}>
+        <Text as={"span"} textStyle={"body2"}>
+          {label}
+        </Text>
+      </Button>
     </Link>
   );
 }

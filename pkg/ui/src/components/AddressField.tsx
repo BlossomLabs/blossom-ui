@@ -9,7 +9,7 @@ type AddressFieldProps = {
 export default function AddressField({ address, icon }: AddressFieldProps) {
   return (
     <TextCopy
-      adornment={icon || <Blockie address={address} scale={2} />}
+      adornment={icon || <Blockie address={address} scale={1.7} />}
       value={address}
     />
   );
