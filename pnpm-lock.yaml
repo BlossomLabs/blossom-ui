@@ -98,8 +98,10 @@ importers:
 
   pkg/ui:
     specifiers:
+      '@chakra-ui/anatomy': ^2.1.1
       '@chakra-ui/icons': ^2.0.17
       '@chakra-ui/react': ^2.5.1
+      '@chakra-ui/styled-system': ^2.6.1
       '@emotion/react': ^11.10.6
       '@emotion/styled': ^11.10.6
       '@fontsource/overpass': ^4.5.11
@@ -129,8 +131,10 @@ importers:
       vite-plugin-eslint: ^1.8.1
       vitest: ^0.28.4
     dependencies:
+      '@chakra-ui/anatomy': 2.1.1
       '@chakra-ui/icons': 2.0.17_react@18.2.0
       '@chakra-ui/react': 2.5.1_nygzdswcp6brzzigm23yq6rx5y
+      '@chakra-ui/styled-system': 2.6.1
       '@emotion/react': 11.10.6_kzbn2opkn2327fwg5yzwzya5o4
       '@emotion/styled': 11.10.6_qry7xzgsc55pr5ngbiorqn3fpa
       framer-motion: 10.0.1_biqbaboplfbrettd7655fr4n2y
@@ -1589,6 +1593,10 @@ packages:
       '@chakra-ui/spinner': 2.0.13_n3dxrjldmk5gnycgnw7noyo5tu
       '@chakra-ui/system': 2.5.1_xqp3pgpqjlfxxa3zxu4zoc4fba
       react: 18.2.0
+    dev: false
+
+  /@chakra-ui/anatomy/2.1.1:
+    resolution: {integrity: sha512-LUHAoqJAgxAqmyckG5bUpBrfEo1FleEyY+1A8hkWciy58gZ+h3GoY9oBpHcdo7XdHPpy3G+3hieK/7i9NLwxAw==}
     dev: false
 
   /@chakra-ui/anatomy/2.1.2:

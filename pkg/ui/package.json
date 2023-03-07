@@ -25,8 +25,10 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@chakra-ui/anatomy": "^2.1.1",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
+    "@chakra-ui/styled-system": "^2.6.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "framer-motion": "^10.0.1",
