@@ -149,7 +149,10 @@ export default function IdentityBadge({
         <PopoverFooter>
           <HStack justify={"space-between"}>
             {popoverAction ? (
-              <Button onClick={handlePopoverActionClick}>
+              <Button
+                onClick={handlePopoverActionClick}
+                color={"surfaceContentSecondary"}
+              >
                 {popoverAction.label}
               </Button>
             ) : null}
