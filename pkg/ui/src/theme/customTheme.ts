@@ -1,6 +1,7 @@
 import { type ThemeConfig } from "@chakra-ui/react";
 import Button from "./ButtonCustomization";
 import Link from "./LinkCustomization";
+import Popover from "./PopoverCustomization";
 
 const config: ThemeConfig = {
   initialColorMode: "light",
@@ -12,6 +13,7 @@ const theme: Record<string, any> = {
   components: {
     Button,
     Link,
+    Popover,
   },
   fontSizes: {
     "2xs": "0.625rem",
