@@ -1,4 +1,13 @@
-import { Box, VStack, HStack, Center, Text } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  VStack,
+  HStack,
+  Center,
+  Text,
+  IconButton,
+  useColorMode,
+} from "@chakra-ui/react";
 import {
   TextCopy,
   Blockie,
@@ -9,6 +18,7 @@ import {
 
 function App() {
   const address = "0x05e5472AEc66eB811329CE0c7698A620b6c5CB35";
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <VStack
       as="main"
@@ -17,6 +27,13 @@ function App() {
       padding={"2rem"}
       textAlign={"center"}
     >
+      <IconButton
+        icon={colorMode === "light" ? <SunIcon /> : <MoonIcon />}
+        onClick={toggleColorMode}
+        aria-label={"Change color mode"}
+        size={"lg"}
+        alignSelf={"flex-end"}
+      />
       <Box w={"200px"}>
         <TextCopy value={address} />
       </Box>
