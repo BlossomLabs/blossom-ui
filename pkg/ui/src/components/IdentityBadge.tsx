@@ -110,7 +110,7 @@ export default function IdentityBadge({
       </Text>
     </HStack>
   ) : (
-    <Popover isOpen={isOpen} onClose={onClose}>
+    <Popover isOpen={isOpen} onClose={onClose} variant={"badge"}>
       <PopoverTrigger>
         <Button
           leftIcon={isValidAddress ? <IdentityBadgeBlockie /> : undefined}
@@ -131,11 +131,12 @@ export default function IdentityBadge({
             <Text>{popoverTitle}</Text>
             {isAccountConnected ? (
               <Tag
-                size={"md"}
+                size={"sm"}
                 variant="subtle"
                 colorScheme="cyan"
                 borderRadius={"full"}
                 title="This is your Ethereum address"
+                color={"tagIndicatorContent"}
               >
                 you
               </Tag>

@@ -98,7 +98,7 @@ export default function TokenBadge({
       <Label />
     </HStack>
   ) : (
-    <Popover isOpen={isOpen} onClose={onClose}>
+    <Popover isOpen={isOpen} onClose={onClose} variant={"badge"}>
       <PopoverTrigger>
         <Button
           leftIcon={isValidAddress ? <TokenIcon /> : undefined}
@@ -113,11 +113,7 @@ export default function TokenBadge({
       <PopoverContent>
         <PopoverArrow />
         <PopoverCloseButton />
-        <PopoverHeader>
-          <HStack>
-            <Text>{title}</Text>
-          </HStack>
-        </PopoverHeader>
+        <PopoverHeader>{title}</PopoverHeader>
         <PopoverBody>
           <AddressField
             address={address}
