@@ -14,7 +14,7 @@ const defaultColors: DefaultColorsType = {
   badge: colorModeFormatter("blue.50", "blue.600"),
   badgeContent: colorModeFormatter("blue.800", "white"),
   badgePressed: colorModeFormatter("gray.50", "blue.500"),
-  border: colorModeFormatter("neutral.200", "neutral.100"),
+  border: colorModeFormatter("blackAlpha.300", "blue.900"),
   content: colorModeFormatter("neutral.900", "shades.100"),
   contentSecondary: colorModeFormatter("neutral.500", "neutral.500"),
   contentDisabled: colorModeFormatter("neutral.400"),
@@ -27,9 +27,11 @@ const defaultColors: DefaultColorsType = {
   iconHighlight: colorModeFormatter("primary.300", "primary.700"),
   link: colorModeFormatter("blue.400", "blue.300"),
   surface: colorModeFormatter("shades.00", "neutral.50"),
-  surfaceContent: colorModeFormatter("neutral.900", "shades.100"),
-  surfaceContentSecondary: colorModeFormatter("neutral.700", "neutral.700"),
+  surfaceContent: colorModeFormatter("gray.700", "white"),
+  surfaceContentSecondary: colorModeFormatter("gray.500", "cyan.500"),
   surfaceHeader: colorModeFormatter("primary.50", "primary.50"),
+  surfaceIcon: colorModeFormatter("gray.400", "blue.600"),
+  tagIndicatorContent: colorModeFormatter("cyan.500", "cyan.400"),
 };
 
 export default defaultColors;

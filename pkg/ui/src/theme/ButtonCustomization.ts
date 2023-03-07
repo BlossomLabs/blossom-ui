@@ -19,10 +19,12 @@ const customIconButton = defineStyle({
     outline: "none",
     transition: "none",
   },
+  color: "surfaceIcon",
 });
 
 const md = defineStyle({
-  height: 6,
+  height: "full",
+  w: "fit-content",
   paddingRight: 2,
   paddingLeft: 0,
   border: 0,
