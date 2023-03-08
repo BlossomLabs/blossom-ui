@@ -29,6 +29,7 @@ type TokenBadgeProps = {
    */
   networkType?: string;
   disabled?: boolean;
+  labelStyle?: React.CSSProperties;
 };
 
 /**
@@ -37,15 +38,17 @@ type TokenBadgeProps = {
  *	@param disabled - Disables the badge as a button and avoids prompting the popover on click.
  *	@param compact - Smaller version of the TokenBadge. Should be used when the TokenBadge is placed inline with text.
  *	@param networkType - Checks the type of network to get an Etherscan URL from the entity.
+ *  @param labelStyle - Styles to apply to the label.
  *
  */
 export default function TokenBadge({
   address = "",
   name = "",
   disabled,
-  compact,
   networkType = "main",
   symbol,
+  labelStyle,
+  ...props
 }: TokenBadgeProps) {
   const { isOpen, onToggle, onClose } = useDisclosure();
   const isValidAddress = isAddress(address);
@@ -61,6 +64,7 @@ export default function TokenBadge({
         textOverflow={"ellipsis"}
         overflow={"hidden"}
         textStyle={"body2"}
+        style={labelStyle}
       >
         {name ? (
           <Text
@@ -84,7 +88,7 @@ export default function TokenBadge({
     return (
       <Center
         overflow={"hidden"}
-        borderRadius={"base"}
+        borderRadius={props.compact ? "sm" : "base"}
         boxSize={isIconBig ? "full" : 4}
       >
         <Image boxSize={isIconBig ? 9 : "full"} src={iconSrc} alt={title} />
@@ -106,6 +110,7 @@ export default function TokenBadge({
           onClick={onToggle}
           variant={"badge"}
           pl={2}
+          {...props}
         >
           <Label />
         </Button>

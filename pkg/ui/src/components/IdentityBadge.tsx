@@ -39,6 +39,7 @@ type IdentityBadgeProps = {
    * @defaultValue `Address`
    */
   popoverTitle?: React.ReactNode;
+  labelStyle: React.CSSProperties;
 };
 
 /**
@@ -51,6 +52,7 @@ type IdentityBadgeProps = {
  *	@param popoverTitle - The title of the popover. You can pass anything that can be rendered, such as a num, string, DOM element, an array of them, or React fragments that contain them.
  *	@param isAccountConnected - If the given, assumes `address` is the same as the connected account and renders "you" in the popover.
  *	@param networkType - Checks the type of network to get an Etherscan URL from the entity.
+ *  @param labelStyle - Styles to apply to the label.
  *	@param popoverAction  - The action of the popover.
  *	@param popoverAction.label  - The node rendered in the popover's action button.
  *	@param popoverAction.onClick  - The onclick handler for the popover's action button.
@@ -66,12 +68,14 @@ export default function IdentityBadge({
   isAccountConnected,
   networkType,
   popoverAction,
+  labelStyle,
 }: IdentityBadgeProps) {
   const { isOpen, onToggle, onClose } = useDisclosure();
   const isValidAddress = isAddress(address);
   const displayLabel =
     label || (isValidAddress && shorten ? shortenAddress(address) : address);
   const etherscanUrl = blockExplorerUrl("address", address, { networkType });
+  const labelTextStyle = !label && address ? "address1" : "body2";
 
   const handlePopoverActionClick = useCallback(() => {
     onClose();
@@ -104,7 +108,8 @@ export default function IdentityBadge({
         textOverflow={"ellipsis"}
         overflow={"hidden"}
         color={"badgeContent"}
-        textStyle={"body2"}
+        textStyle={labelTextStyle}
+        style={labelStyle}
       >
         {displayLabel}
       </Text>
@@ -118,7 +123,7 @@ export default function IdentityBadge({
           onClick={onToggle}
           variant={"badge"}
         >
-          <Text as={"span"} textStyle={"body2"}>
+          <Text as={"span"} textStyle={labelTextStyle} style={labelStyle}>
             {displayLabel}
           </Text>
         </Button>
