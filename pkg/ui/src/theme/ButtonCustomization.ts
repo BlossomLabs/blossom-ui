@@ -1,18 +1,51 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
 
-const buttonBase = {
-  whiteSpace: "nowrap",
-  textDecoration: "none",
-  textAlign: "center",
-  background: "none",
-  borderRadius: "base",
-};
+const baseStyle = defineStyle((props) => {
+  const wide = props.wide
+    ? { width: "full", display: "flex" }
+    : { display: "inline-flex" };
+
+  return {
+    ...wide,
+    border: "none",
+    boxShadow: "sm",
+    whiteSpace: "nowrap",
+    textDecoration: "none",
+    textAlign: "center",
+    background: "none",
+    borderRadius: "base",
+    _disabled: {
+      background: "disabled",
+      color: "disabledContent",
+      border: "0",
+      boxShadow: "none",
+    },
+  };
+});
+
+const positiveVariant = defineStyle({
+  background: "positive",
+  color: "positiveContent",
+  iconColor: "positiveContent",
+});
+
+const negativeVariant = defineStyle({
+  background: "negative",
+  color: "negativeContent",
+});
+
+const defaultVariant = defineStyle({
+  background: "surfaceInteractive",
+  color: "surfaceContent",
+  border: "1px solid",
+  borderColor: "border",
+});
 
 const customIconButton = defineStyle({
   bgColor: "inherit",
-  border: "none",
   outline: "none",
   transition: "none",
+  boxShadow: "none",
   _hover: {
     bgColor: "inherit",
     border: "none",
@@ -22,33 +55,37 @@ const customIconButton = defineStyle({
   color: "surfaceIcon",
 });
 
-const md = defineStyle({
-  height: "full",
-  w: "fit-content",
-  paddingRight: 2,
-  paddingLeft: 0,
-  border: 0,
-  outline: 0,
-});
-
 const badgeVariant = defineStyle((props) => {
   const { compact, disabled } = props;
 
   return {
-    ...buttonBase,
     color: "badgeContent",
     background: compact ? "transparent" : "badge",
+    boxShadow: "none",
     _active: {
       background: !disabled && compact ? "badgePressed" : "initial",
     },
+    height: "full",
+    w: "fit-content",
+    paddingRight: 2,
+    paddingLeft: 0,
+    border: 0,
+    outline: 0,
   };
 });
 
 const Button = defineStyleConfig({
-  variants: { customIconButton, badge: badgeVariant },
-  sizes: { md },
+  baseStyle,
+  variants: {
+    customIconButton,
+    badge: badgeVariant,
+    positive: positiveVariant,
+    negative: negativeVariant,
+    default: defaultVariant,
+  },
   defaultProps: {
     size: "md",
+    variant: "default",
   },
 });
 
