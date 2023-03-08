@@ -4,7 +4,7 @@ export default function Docs() {
   return (
     <div>
       <h1>Docs</h1>
-      <Button />
+      <Button>Hellow from Blossom UI</Button>
     </div>
   );
 }

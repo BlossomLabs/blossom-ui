@@ -39,7 +39,7 @@ type IdentityBadgeProps = {
    * @defaultValue `Address`
    */
   popoverTitle?: React.ReactNode;
-  labelStyle: React.CSSProperties;
+  labelStyle?: React.CSSProperties;
 };
 
 /**
