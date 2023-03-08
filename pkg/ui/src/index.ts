@@ -1,3 +1,5 @@
+export * from "@chakra-ui/react";
+
 export { default as TextCopy } from "./components/TextCopy";
 export { default as Blockie } from "./components/Blockie";
 export { default as TransactionBadge } from "./components/TransactionBadge";
