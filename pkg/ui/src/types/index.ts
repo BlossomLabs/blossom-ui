@@ -69,3 +69,9 @@ export type TransactionBadgeProps = {
    */
   shorten?: boolean;
 };
+
+export type TextCopyProps = {
+  value: string;
+  adornment?: React.ReactNode;
+  monospace?: boolean;
+};

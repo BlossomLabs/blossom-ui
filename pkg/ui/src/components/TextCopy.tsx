@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Grid,
   Text,
@@ -7,8 +8,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
-import { useState } from "react";
-
+import { type TextCopyProps } from "../types";
 /**
  * @param adornment Allows to set an adornment that will get used on the left side of the text field (in left to right languages). The copy button is always displayed on the other side.
  * @param value The field content (single line).
@@ -18,11 +18,7 @@ export default function TextCopy({
   value,
   adornment,
   monospace = true,
-}: {
-  value: string;
-  adornment?: React.ReactNode;
-  monospace?: boolean;
-}): JSX.Element {
+}: TextCopyProps): JSX.Element {
   const { onCopy } = useClipboard(value);
   const [hasCopied, onClick] = useState(false);
 
