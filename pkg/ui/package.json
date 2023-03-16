@@ -31,6 +31,7 @@
     "@chakra-ui/styled-system": "^2.6.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@ladle/react": "^2.10.1",
     "framer-motion": "^10.0.1",
     "react": "^18.2.0",
     "react-blockies": "^1.4.1",
