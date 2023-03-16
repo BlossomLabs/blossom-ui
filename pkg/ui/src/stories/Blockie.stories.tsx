@@ -1,21 +1,12 @@
-import type { Story } from "@ladle/react";
+import type { Story, StoryDefault } from "@ladle/react";
 import { Blockie } from "../";
 import Provider from "../components/LadleThemeProvider";
 import { BlockieProps } from "../types";
 
 const address = "0x05e5472AEc66eB811329CE0c7698A620b6c5CB35";
 
-export const Default: Story = () => (
-  <Provider>
-    <Blockie address={address} />
-  </Provider>
-);
-
-export const Custom: Story<BlockieProps> = (props) => (
-  <Provider>
-    <Blockie {...props} />
-  </Provider>
-);
+export const Default: Story = () => <Blockie address={address} />;
+export const Custom: Story<BlockieProps> = (props) => <Blockie {...props} />;
 
 Custom.args = {
   address,
@@ -36,3 +27,15 @@ Custom.argTypes = {
     control: { type: "select" }, // or type: multi-select
   },
 };
+
+export default {
+  decorators: [
+    (Component) => (
+      <Provider>
+        <div>
+          <Component />
+        </div>
+      </Provider>
+    ),
+  ],
+} satisfies StoryDefault;

@@ -1,14 +1,10 @@
-import type { Story } from "@ladle/react";
+import type { Story, StoryDefault } from "@ladle/react";
 import { TransactionBadge } from "../";
 import Provider from "../components/LadleThemeProvider";
 import { type TransactionBadgeProps } from "../types";
 
 export const Default: Story<TransactionBadgeProps> = (props) => (
-  <Provider>
-    <div>
-      <TransactionBadge {...props} />
-    </div>
-  </Provider>
+  <TransactionBadge {...props} />
 );
 
 Default.args = {
@@ -43,3 +39,15 @@ Default.argTypes = {
     control: { type: "select" }, // or type: multi-select
   },
 };
+
+export default {
+  decorators: [
+    (Component) => (
+      <Provider>
+        <div>
+          <Component />
+        </div>
+      </Provider>
+    ),
+  ],
+} satisfies StoryDefault;

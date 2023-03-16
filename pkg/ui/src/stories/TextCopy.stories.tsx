@@ -1,15 +1,9 @@
-import type { Story } from "@ladle/react";
+import type { Story, StoryDefault } from "@ladle/react";
 import Provider from "../components/LadleThemeProvider";
 import { TextCopy } from "..";
 import { TextCopyProps } from "../types";
 
-export const Default: Story<TextCopyProps> = (props) => (
-  <Provider>
-    <div>
-      <TextCopy {...props} />
-    </div>
-  </Provider>
-);
+export const Default: Story<TextCopyProps> = (props) => <TextCopy {...props} />;
 
 Default.args = {
   value: "Copy this value!",
@@ -22,3 +16,15 @@ Default.argTypes = {
     defaultValue: false,
   },
 };
+
+export default {
+  decorators: [
+    (Component) => (
+      <Provider>
+        <div>
+          <Component />
+        </div>
+      </Provider>
+    ),
+  ],
+} satisfies StoryDefault;

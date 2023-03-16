@@ -1,15 +1,11 @@
-import type { Story } from "@ladle/react";
+import type { Story, StoryDefault } from "@ladle/react";
 import { Box } from "@chakra-ui/react";
 import { TokenBadge } from "../";
 import Provider from "../components/LadleThemeProvider";
 import { type TokenBadgeProps } from "../types";
 
 export const Default: Story<TokenBadgeProps> = (props) => (
-  <Provider>
-    <div>
-      <TokenBadge {...props} />
-    </div>
-  </Provider>
+  <TokenBadge {...props} />
 );
 
 Default.args = {
@@ -47,11 +43,9 @@ Default.argTypes = {
 };
 
 export const LimitedWidth: Story<TokenBadgeProps> = (props) => (
-  <Provider>
-    <Box maxW={"250px"} display={"flex"}>
-      <TokenBadge {...props} />
-    </Box>
-  </Provider>
+  <Box maxW={"250px"} display={"flex"}>
+    <TokenBadge {...props} />
+  </Box>
 );
 
 LimitedWidth.args = {
@@ -83,3 +77,15 @@ LimitedWidth.argTypes = {
     control: { type: "select" }, // or type: multi-select
   },
 };
+
+export default {
+  decorators: [
+    (Component) => (
+      <Provider>
+        <div>
+          <Component />
+        </div>
+      </Provider>
+    ),
+  ],
+} satisfies StoryDefault;
