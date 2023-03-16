@@ -1,10 +1,6 @@
 import TextCopy from "./TextCopy";
 import Blockie from "./Blockie";
-
-type AddressFieldProps = {
-  address: string;
-  icon?: React.ReactNode;
-};
+import { AddressFieldProps } from "../types";
 
 /**
  *

@@ -17,20 +17,8 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { blockExplorerUrl, isAddress, tokenIconUrl } from "../utils";
+import { type TokenBadgeProps } from "../types";
 import AddressField from "./AddressField";
-
-type TokenBadgeProps = {
-  symbol: string;
-  name?: string;
-  address?: string;
-  compact?: boolean;
-  /**
-   * @defaultValue main
-   */
-  networkType?: string;
-  disabled?: boolean;
-  labelStyle?: React.CSSProperties;
-};
 
 /**
  *

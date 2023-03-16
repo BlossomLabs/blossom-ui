@@ -19,28 +19,7 @@ import {
 import { blockExplorerUrl, isAddress, shortenAddress } from "../utils";
 import Blockie from "./Blockie";
 import AddressField from "./AddressField";
-
-type IdentityBadgeProps = {
-  address?: string;
-  isAccountConnected?: boolean;
-  compact?: boolean;
-  label?: string;
-  networkType?: string;
-  /**
-   * @defaultValue `true`
-   */
-  shorten?: boolean;
-  disabled?: boolean;
-  popoverAction?: {
-    label: React.ReactNode;
-    onClick: () => void;
-  };
-  /**
-   * @defaultValue `Address`
-   */
-  popoverTitle?: React.ReactNode;
-  labelStyle?: React.CSSProperties;
-};
+import { type IdentityBadgeProps } from "../types";
 
 /**
  *

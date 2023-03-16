@@ -1,29 +1,11 @@
 import Blockies from "react-blockies";
 import { Box } from "@chakra-ui/react";
+import { type BlockieProps } from "../types";
 import { isAddress } from "../utils";
 
 const PX_RATIO = typeof devicePixelRatio === "undefined" ? 2 : devicePixelRatio;
 const BLOCKIES_SQUARES = 8; // commonly used to represent Ethereum addresses
 const BASE_SCALE = 3;
-
-type BlockieProps = {
-  address: string;
-
-  /**
-   * @defaultValue 1
-   */
-  scale?: number;
-
-  /**
-   * @defaultValue `none`
-   */
-  radius?: string;
-
-  /**
-   * @defaultValue 0.3
-   */
-  opacity?: number;
-};
 
 function BlockiesScaling({
   children,

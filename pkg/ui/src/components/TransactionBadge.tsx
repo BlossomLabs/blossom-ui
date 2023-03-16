@@ -1,18 +1,6 @@
 import { Button, Link, Text } from "@chakra-ui/react";
 import { blockExplorerUrl, isTransaction, shortenTransaction } from "../utils";
-
-type TransactionBadgeProps = {
-  transaction: string;
-  disabled?: boolean;
-  /**
-   * @defaultValue main
-   */
-  networkType?: string;
-  /**
-   * @defaultValue true
-   */
-  shorten?: boolean;
-};
+import { type TransactionBadgeProps } from "../types";
 
 /**
  * TransactionBadge
