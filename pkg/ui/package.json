@@ -22,7 +22,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "ladle:serve": "ladle serve",
+    "ladle:build": "ladle build"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "^2.1.1",
